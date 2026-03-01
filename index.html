@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>세계수 — 습관으로 키우는 나만의 세계수</title>
+  <meta name="description" content="습관으로 세계수를 키우고, 캐릭터를 수집하세요. 매일의 작은 습관이 거대한 세계수가 됩니다.">
+  <meta property="og:title" content="세계수 — 습관으로 키우는 나만의 세계수">
+  <meta property="og:description" content="습관으로 세계수를 키우고, 캐릭터를 수집하세요.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://segyesu.app">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;800&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green-dark: #2D5016;
+      --green: #4A7C28;
+      --green-light: #7FB946;
+      --green-pale: #C5E1A5;
+      --beige: #FFF8E7;
+      --beige-dark: #F5E6C8;
+      --brown: #8B6914;
+      --brown-light: #C4A35A;
+      --text: #3E2723;
+      --text-light: #6D4C41;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--beige);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(180deg, #E8F5E9 0%, var(--beige) 100%);
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(circle at 20% 80%, rgba(127, 185, 70, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(197, 225, 165, 0.2) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+    }
+
+    .tree-icon {
+      font-size: 5rem;
+      margin-bottom: 1rem;
+      display: block;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .app-name {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--green-dark);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .app-category {
+      font-size: 0.9rem;
+      color: var(--green);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .tagline {
+      font-size: 1.35rem;
+      color: var(--text-light);
+      margin-bottom: 2.5rem;
+      font-weight: 400;
+      line-height: 1.8;
+    }
+
+    .tagline strong {
+      color: var(--green-dark);
+      font-weight: 600;
+    }
+
+    /* Store Buttons */
+    .store-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .store-btn svg {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
+    .store-btn--apple {
+      background: var(--green-dark);
+      color: #fff;
+    }
+
+    .store-btn--apple:hover {
+      background: #1B3A0A;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(45, 80, 22, 0.3);
+    }
+
+    .store-btn--google {
+      background: #fff;
+      color: var(--green-dark);
+      border: 2px solid var(--green-light);
+    }
+
+    .store-btn--google:hover {
+      background: var(--green-pale);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(74, 124, 40, 0.15);
+    }
+
+    /* Features */
+    .features {
+      padding: 5rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .features h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      color: var(--green-dark);
+      margin-bottom: 3rem;
+      font-weight: 800;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 2px 16px rgba(45, 80, 22, 0.06);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .feature-card h3 {
+      font-size: 1.1rem;
+      color: var(--green-dark);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .feature-card p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(180deg, var(--beige) 0%, #E8F5E9 100%);
+    }
+
+    .cta p {
+      font-size: 1.2rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
+
+    .cta p strong {
+      color: var(--green-dark);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--green-dark);
+      color: var(--green-pale);
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: var(--green-pale);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    .footer-links {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      margin: 0 1rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .app-name { font-size: 2.2rem; }
+      .tagline { font-size: 1.1rem; }
+      .tree-icon { font-size: 4rem; }
+      .features { padding: 3rem 1.5rem; }
+      .store-btn { padding: 0.75rem 1.4rem; font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="hero-content">
+      <span class="tree-icon">🌳</span>
+      <h1 class="app-name">세계수</h1>
+      <p class="app-category">자기계발 &middot; 습관 트래커</p>
+      <p class="tagline">
+        습관으로 <strong>세계수</strong>를 키우고,<br>
+        <strong>캐릭터</strong>를 수집하세요.<br>
+        매일의 작은 실천이 거대한 나무가 됩니다.
+      </p>
+      <div class="store-buttons">
+        <a href="#" class="store-btn store-btn--apple">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          App Store
+        </a>
+        <a href="#" class="store-btn store-btn--google">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.49c-.36-.17-.58-.54-.58-.95V1.46c0-.41.22-.78.58-.95l11.25 11.49L3.18 23.49zm1.4.73l12.06-6.96-2.68-2.74-9.38 9.7zm12.06-16.5L4.58.76l9.38 9.58 2.68-2.62zm1.46.85L15.2 11l2.9 2.97 2.56-1.48c.47-.27.47-.72 0-.99l-2.56-1.43z"/></svg>
+          Google Play
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <h2>이런 경험이 기다리고 있어요</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <span class="feature-icon">✅</span>
+        <h3>습관 체크</h3>
+        <p>매일 습관을 체크하면 세계수에 생명력이 쌓여요. 꾸준함이 곧 성장입니다.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🌱</span>
+        <h3>세계수 성장</h3>
+        <p>작은 새싹에서 시작해 거대한 세계수로. 나의 습관 여정이 나무에 담깁니다.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🐾</span>
+        <h3>캐릭터 수집</h3>
+        <p>습관을 쌓으면 다양한 캐릭터를 만나요. 나만의 컬렉션을 완성해 보세요.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <p><strong>오늘부터</strong> 작은 습관 하나, 시작해 볼까요?</p>
+    <div class="store-buttons">
+      <a href="#" class="store-btn store-btn--apple">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        App Store
+      </a>
+      <a href="#" class="store-btn store-btn--google">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.49c-.36-.17-.58-.54-.58-.95V1.46c0-.41.22-.78.58-.95l11.25 11.49L3.18 23.49zm1.4.73l12.06-6.96-2.68-2.74-9.38 9.7zm12.06-16.5L4.58.76l9.38 9.58 2.68-2.62zm1.46.85L15.2 11l2.9 2.97 2.56-1.48c.47-.27.47-.72 0-.99l-2.56-1.43z"/></svg>
+        Google Play
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="privacy.html">개인정보처리방침</a>
+      <a href="mailto:support@segyesu.app">문의하기</a>
+    </div>
+    <p>&copy; 2026 세계수 (Segyesu). All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
